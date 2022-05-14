@@ -7,10 +7,9 @@ package frc.robot;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.LoggableSmartDashboard.LogManager;
 import frc.robot.LoggableSmartDashboard.LoggableSmartDashboard;
-import frc.robot.LoggableSmartDashboard.SmartDashboardLogSender;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -19,11 +18,7 @@ import frc.robot.LoggableSmartDashboard.SmartDashboardLogSender;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
-
-  private RobotContainer m_robotContainer;
   private DataLog dataLog;
-  private SmartDashboardLogSender logSender;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -31,11 +26,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    CommandScheduler.getInstance().cancelAll();
     dataLog = new DataLog("D:\\Downloads", "testLogSmartDashboard");
-    logSender = new SmartDashboardLogSender();
   }
 
   /**
@@ -57,7 +49,7 @@ public class Robot extends TimedRobot {
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
   public void disabledInit() {
-    logSender.stopLogging();
+    LogManager.getInstance().stopLogging();
   }
 
   @Override
@@ -65,14 +57,7 @@ public class Robot extends TimedRobot {
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
-  }
+  public void autonomousInit() {}
 
   /** This function is called periodically during autonomous. */
   @Override
@@ -80,7 +65,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    logSender.startLogging(dataLog);
+    LogManager.getInstance().startLogging(dataLog);
   }
 
   /** This function is called periodically during operator control. */
@@ -88,6 +73,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     long timestamp = WPIUtilJNI.now();
     LoggableSmartDashboard.putNumber("time", timestamp);
+    LoggableSmartDashboard.putString("testString", "testString" + timestamp);
+    LoggableSmartDashboard.putBoolean("testBoolean", timestamp % 2 == 0);
+
+    CommandScheduler.getInstance().run();
   }
 
   @Override

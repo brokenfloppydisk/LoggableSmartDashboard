@@ -2,6 +2,7 @@ package frc.robot.LoggableSmartDashboard;
 
 import java.util.HashMap;
 
+import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -17,14 +18,34 @@ public class LoggableSmartDashboard {
     protected static HashMap<Integer, String> stringEntries = new HashMap<Integer, String>();
     protected static HashMap<Integer, Boolean> booleanEntries = new HashMap<Integer, Boolean>();
 
-    private static boolean currentlyLogging = false;
-    private static DataLog dataLog;
+    protected static boolean currentlyLogging = false;
+    protected static DataLog dataLog;
 
-    public static void clearHashMaps() {
+    protected static void clearHashMaps() {
         logEntryIDs.clear();
         doubleEntries.clear();
         stringEntries.clear();
         booleanEntries.clear();
+    }
+
+    protected static void appendEntries() {
+        if (!currentlyLogging) {return;}
+        
+        long timestamp = WPIUtilJNI.now();
+
+        // Alternative implementation (less readable):
+        // for (Entry<Integer, Double> entry : doubleEntries.entrySet()) {
+        //     dataLog.appendDouble(entry.getKey(), entry.getValue(), timestamp);
+        // }
+        for (Integer id : LoggableSmartDashboard.doubleEntries.keySet()) {
+            dataLog.appendDouble(id, doubleEntries.get(id), timestamp);
+        }
+        for (Integer id : LoggableSmartDashboard.stringEntries.keySet()) {
+            dataLog.appendString(id, stringEntries.get(id), timestamp);
+        }
+        for (Integer id : LoggableSmartDashboard.booleanEntries.keySet()) {
+            dataLog.appendBoolean(id, booleanEntries.get(id), timestamp);
+        }
     }
 
     private static int getID(String key, String type) {
