@@ -9,3 +9,7 @@ This library acts as a wrapper around the SmartDashboard class in WPILib, allowi
 2. Replace SmartDashboard put calls with LoggableSmartDashboard calls
 
 3. Call `LogManager.getInstance.startLogging()` and `LogManager.getInstance.stopLogging()` to start and stop logging
+
+4. Use DataLog Tool to open the data log and export to csv as table format
+
+5. Use consolidate.py to consolidate the rows, if needed
