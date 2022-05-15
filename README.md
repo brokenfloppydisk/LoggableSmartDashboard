@@ -45,6 +45,12 @@ the default log in `DataLogManager.getLog()` instead.
 `LogSmartDashboard` is a command that automatically gets scheduled every 20 ms
 by `LogManager` to log the current SmartDashboard values.
 
+To export the logs, use DataLog Tool (included in 
+[installer](https://github.com/wpilibsuite/allwpilib/releases) for WPILib 2022.4.1)
+
+The logs can also be processed with `consolidate.py` to consolidate the rows, as
+table exporting to CSV in DataLog Tool does not combine rows with the same timestamp.
+
 ## Example Code:
 
 #### **`Robot.java`**
