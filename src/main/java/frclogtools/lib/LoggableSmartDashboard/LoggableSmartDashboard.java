@@ -1,4 +1,4 @@
-package frc.robot.LoggableSmartDashboard;
+package frclogtools.lib.LoggableSmartDashboard;
 
 import java.util.HashMap;
 

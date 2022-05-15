@@ -1,4 +1,4 @@
-package frc.robot.LoggableSmartDashboard;
+package frclogtools.lib.LoggableSmartDashboard;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
