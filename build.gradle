@@ -13,6 +13,5 @@ dependencies {
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
 
-    testImplementation 'com.github.wpilibsuite:allwpilib:'
     testImplementation 'junit:junit:4.13.1'
 }
