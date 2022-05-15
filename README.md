@@ -1,7 +1,6 @@
 # LoggableSmartDashboard
 
-This library acts as a wrapper around the SmartDashboard class in 
-WPILib, allowing for the logging of SmartDashboard values.
+This library acts as a wrapper around the SmartDashboard class in WPILib, allowing for the logging of SmartDashboard values.
 
 ## Installation:
 
@@ -31,30 +30,25 @@ Then, run Build Robot Code or `./gradlew build`.
 
 ## Usage:
 
-Use `LoggableSmartDashboard.putNumber()`, `.putBoolean()`, or `.putString()` 
-in place of `SmartDashboard` to enable logging for these values.
+Use `LoggableSmartDashboard.putNumber()`, `.putBoolean()`, or `.putString()` in place of `SmartDashboard` to enable logging for these values.
 
-Use `LogManager.getInstance()` to get an instance of the LogManager,
-and call `.startLogging()` and `.stopLogging()` to start and stop logging.
+Use `LogManager.getInstance()` to get an instance of the LogManager, and call `.startLogging()` and `.stopLogging()` to start and stop logging.
 
 DataLog from WPILib is used to log values, so only WPILib 2022.4.1 and up is supported.
 
-If no DataLog is passed to `.startLogging()`, the data will be written to
-the default log in `DataLogManager.getLog()` instead.
+If no DataLog is passed to `.startLogging()`, the data will be written to the default log in `DataLogManager.getLog()` instead.
 
-`LogSmartDashboard` is a command that automatically gets scheduled every 20 ms
-by `LogManager` to log the current SmartDashboard values.
+`LogSmartDashboard` is a command that automatically gets scheduled every 20 ms by `LogManager` to log the current SmartDashboard values.
 
-To export the logs, use DataLog Tool (included in 
-[installer](https://github.com/wpilibsuite/allwpilib/releases) for WPILib 2022.4.1)
+To export the logs, use DataLog Tool (included in the [installer](https://github.com/wpilibsuite/allwpilib/releases) for WPILib 2022.4.1)
 
-The logs can also be processed with `consolidate.py` to consolidate the rows, as
-table exporting to CSV in DataLog Tool does not combine rows with the same timestamp.
+The logs can also be processed with [`consolidate.py`](https://github.com/brokenfloppydisk/LoggableSmartDashboard/blob/main/consolidate.py) 
+to consolidate the rows, as table exporting to CSV in DataLog Tool does not combine rows with the same timestamp.
 
 ## Example Code:
 
 #### **`Robot.java`**
-```
+```java
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.wpilibj.TimedRobot;
