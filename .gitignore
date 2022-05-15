@@ -104,11 +104,11 @@ Temporary Items
 .apdisk
 
 ### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+/Example\ Usage/.vscode/*
+!/Example\ Usage/.vscode/settings.json
+!/Example\ Usage/.vscode/tasks.json
+!/Example\ Usage/.vscode/launch.json
+!/Example\ Usage/.vscode/extensions.json
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -136,11 +136,11 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Gradle ###
-.gradle
-/build/
+/Example\ Usage/.gradle
+/Example\ Usage/build/
 
 # Ignore Gradle GUI config
-gradle-app.setting
+/Example\ Usage/gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
@@ -160,3 +160,4 @@ bin/
 
 # Simulation GUI and other tools window save file
 *-window.json
+
