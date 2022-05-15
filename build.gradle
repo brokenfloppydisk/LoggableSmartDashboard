@@ -65,6 +65,7 @@ dependencies {
     nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
     simulationRelease wpi.sim.enableRelease()
 
+    testImplementation 'com.github.wpilibsuite:allwpilib:'
     testImplementation 'junit:junit:4.13.1'
 }
 
