@@ -1,9 +1,14 @@
 plugins {
     id "java"
+    id "maven-publish"
     id "edu.wpi.first.GradleRIO" version "2022.4.1"
 }
 
+group = 'com.github.brokenfloppydisk'
+
 repositories {
+    mavenCentral()
+
     maven {
         url 'https://jitpack.io'
     }
@@ -14,4 +19,17 @@ dependencies {
     implementation wpi.java.vendor.java()
 
     testImplementation 'junit:junit:4.13.1'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+		from components.java
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = "7.4.2"
+    distributionType = Wrapper.DistributionType.ALL
 }
