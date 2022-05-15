@@ -1,4 +1,4 @@
-package frclogtools.lib.LoggableSmartDashboard;
+package frclogtools.lib;
 
 import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.wpilibj.DataLogManager;
