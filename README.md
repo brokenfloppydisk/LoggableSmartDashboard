@@ -1,6 +1,6 @@
 # LoggableSmartDashboard
 
-This library acts as a wrapper around the SmartDashboard class in WPILib, allowing for the logging of SmartDashboard values.
+This library acts as a wrapper around the [SmartDashboard](https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/wpilibj/smartdashboard/SmartDashboard.html) class in WPILib, allowing for the logging of SmartDashboard values.
 
 ## Installation:
 
@@ -10,9 +10,9 @@ Add `frclogtools.jar` to a lib folder at the root folder of your repository.
 
 ### With Gradle:
 
-In build.gradle, add:
+In `build.gradle`, add:
 
-```
+```gradle
 repositories {
     maven {
         url "https://jitpack.io"
@@ -70,7 +70,6 @@ public class Robot extends TimedRobot {
     CommandScheduler.getInstance().run();
   }
 
-  /** This function is called once each time the robot enters Disabled mode. */
   @Override
   public void disabledInit() {
     LogManager.getInstance().stopLogging();
